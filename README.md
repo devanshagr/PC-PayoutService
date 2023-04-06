@@ -1,5 +1,7 @@
 Steps:
 
-1. Place the soure code `Parameter Climate` in a folder
-2. Navigate to `Parameter Climate` folder
-3. Run `pip install -r requirements.txt` to install the libraries
+1. Clone the repo
+2. cd `PC-PayoutService`
+3. Add virtual env by `python3 -m venv venv`
+4. Activate the virtual env by `source venv/bin/activate`
+5. Run `pip install -r requirements.txt` to install the libraries
