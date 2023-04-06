@@ -15,10 +15,10 @@ API_URL = "https://aemo.com.au/aemo/data/nem/priceanddemand/PRICE_AND_DEMAND_{}_
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (iPad; CPU OS 12_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148'
 }
-HISTORICAL_PRICE_DATA_PATH = "Data/Historical_Price_Data"
+HISTORICAL_PRICE_DATA_PATH = "Data_Source/Historical_Price_Data"
 Q4_MONTHS = [10, 11, 12]
 START_DATE = date(1998, 1, 1)
-SLEEP_FOR = 0
+SLEEP_FOR = 0 #seconds
 
 def save_file(content, year_month):
     """
@@ -35,7 +35,7 @@ def save_file(content, year_month):
     if not os.path.exists(HISTORICAL_PRICE_DATA_PATH):
         os.mkdir(HISTORICAL_PRICE_DATA_PATH)
     file_path = f"{HISTORICAL_PRICE_DATA_PATH}/{year_month}.csv"
-    # response_data.to_csv(file_path, index=None)
+    response_data.to_csv(file_path, index=None)
 
 def extract_content_from_response(response):
     """
@@ -58,7 +58,7 @@ def transform_data(df):
     output = df.resample("5min", on="datetime")[["RRP"]].last().div(1).bfill().reset_index()
     output["SETTLEMENTDATE"] = output["datetime"]
     output = output.drop("datetime", axis=1)[[ "SETTLEMENTDATE", "RRP"]]
-    # output = output[output["SETTLEMENTDATE"].dt.month.isin(Q4_MONTHS)]
+    output = output[output["SETTLEMENTDATE"].dt.month.isin(Q4_MONTHS)] # only consider Q4 months since we have future price for Q4
     return output
 
 def get_data(year_month):
