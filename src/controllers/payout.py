@@ -12,8 +12,8 @@ from src.data.models.payout_request import PayoutRequest
 log = logging.getLogger(__name__)
 
 HISTORICAL_PRICE_DATA_PATH = "Data_Source/Historical_Price_Data/Combined_Price_Data/Combined_Data_q4.csv"
-TMAX_DATA_PATH = "Data/Sydney_Airport_Tmax.csv"
-FUTURE_PRICE_FILE = "Data/Future_Price.txt"
+TMAX_DATA_PATH = "Data_Source/Sydney_Airport_Tmax.csv"
+FUTURE_PRICE_FILE = "Data_Source/Future_Price.txt"
 Q4_MONTHS = [10, 11, 12]
 
 

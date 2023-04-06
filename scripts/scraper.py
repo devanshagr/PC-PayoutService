@@ -12,7 +12,7 @@ DELAY = 5 # seconds
 STATE_NAME = "New South Wales"
 QUARTER_DATA = "BQtr"
 Q4_DATA = "Q423"
-PATH_TO_FILE = "Data/Future_Price.txt"
+PATH_TO_FILE = "Data_Source/Future_Price.txt"
 
 market_dataset_xpath = "//div[@class='market-dataset']"
 parent_xpath = "//div[@class='market-dataset']//table//tbody//tr//td[@class='market-dataset-state']"
@@ -66,7 +66,7 @@ def get_future_price():
         "future_price": future_price
     }
     
-    # save_price_to_file(data)
+    save_price_to_file(data)
 
     return data
 
